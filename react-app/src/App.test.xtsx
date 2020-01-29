@@ -6,7 +6,7 @@ test('renders learn react link', async () => {
     const { getByText } = render(<App />);
 
     await wait(() => {
-        const linkElement = getByText(/Hello!/i);
+        const linkElement = getByText(/Your Narratives/i);
         expect(linkElement).toBeInTheDocument();
     });
 });

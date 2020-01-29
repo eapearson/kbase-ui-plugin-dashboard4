@@ -48,7 +48,7 @@ export default class YourNarratives extends React.Component<Props, State> {
     }
 
     render() {
-        return <div className="YourNarratives">
+        return <div className="YourNarratives" data-testid="YourNarratives">
             {this.renderNarratives()}
         </div>;
     }
