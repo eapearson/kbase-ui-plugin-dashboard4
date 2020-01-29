@@ -1,9 +1,9 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { createReduxStore } from "./redux/store";
-import { AppBase } from "@kbase/ui-components";
+import { AppBase, AuthGate } from "@kbase/ui-components";
 import "./App.css";
-import { Button } from "antd";
+import Dashboard from './components/dashboard';
 
 const store = createReduxStore();
 
@@ -16,10 +16,11 @@ export default class App<AppProps, AppState> extends React.Component {
         return (
             <Provider store={store}>
                 <AppBase>
-                    <div className="App">
-                        <p>Hello!</p>
-                        <Button>Hi!</Button>
-                    </div>
+                    <AuthGate required={true}>
+                        <div className="App">
+                            <Dashboard />
+                        </div>
+                    </AuthGate>
                 </AppBase>
             </Provider>
         );

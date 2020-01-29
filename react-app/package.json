@@ -47,5 +47,6 @@
     "proxy": "https://ci.kbase.us",
     "devDependencies": {
         "nodemon": "2.0.2"
-    }
+    },
+    "homepage": "./"
 }
