@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Icon, Button, Alert } from 'antd';
-import { timingSafeEqual } from 'crypto';
 
 export interface WidgetProps {
     title: string;

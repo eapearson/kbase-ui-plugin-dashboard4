@@ -5,7 +5,7 @@ import Component from './view';
 test('renders learn react link', async () => {
     const { findAllByTestId } = render(<Component narratives={[]} />);
     await wait(async () => {
-        const el = await findAllByTestId('TutorialNarratives');
+        const el = await findAllByTestId('TutorialNarratives-table');
         expect(el.length).toEqual(1);
     });
 });

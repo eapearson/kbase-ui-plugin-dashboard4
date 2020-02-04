@@ -8,7 +8,6 @@ import JobsCard from '../jobs';
 import OrganizationsCard from '../organizations';
 import './style.css';
 import Widget from '../widget';
-import uuid from 'uuid';
 
 export interface DashboardProps {
 }
@@ -38,9 +37,6 @@ interface WidgetRegistration {
     make: () => JSX.Element;
     renderConfig: () => JSX.Element;
     renderAbout: () => JSX.Element;
-}
-
-class YourNarrativesWidget extends Widget {
 }
 
 interface WidgetInstance {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Tooltip } from 'antd';
 import './style.css';
-import { NiceRelativeTime } from '@kbase/ui-components';
 import { Job } from './common';
 
 export interface Props {
@@ -34,7 +33,7 @@ export default class PublicNarratives extends React.Component<Props, State> {
             return this.renderJob(job);
         });
 
-        return <div className="LayoutTable">
+        return <div className="LayoutTable" data-testid="Jobs-table">
             {rows}
         </div>;
     }

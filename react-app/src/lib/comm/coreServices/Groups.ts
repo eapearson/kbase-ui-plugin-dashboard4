@@ -1,5 +1,3 @@
-// import { AppException } from '../../types';
-
 export const MAX_GROUPS_PER_LIST_REQUEST = 100;
 
 export class AppException extends Error {
@@ -239,16 +237,6 @@ export interface RequestResourceParams {
     type: string;
     resourceId: string;
     groupId: string;
-}
-
-function promiseTry<T>(fun: () => Promise<T>): Promise<T> {
-    return new Promise<T>((resolve, reject) => {
-        try {
-            return resolve(fun());
-        } catch (ex) {
-            reject(ex);
-        }
-    });
 }
 
 export interface GroupError {
@@ -970,7 +958,7 @@ export class GroupsClient {
         const result = await this.get<any>(path);
         const requestStatuses = new Map<GroupID, RequestStatus>();
         for (const [groupId, requestStatus] of Object.entries(result)) {
-            requestStatuses.set(groupId, <RequestStatus>requestStatus);
+            requestStatuses.set(groupId, requestStatus as RequestStatus);
         }
         return requestStatuses;
     }

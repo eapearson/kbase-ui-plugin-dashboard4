@@ -40,7 +40,7 @@ export default class PublicNarratives extends React.Component<Props, State> {
             return this.renderNarrative(narrative);
         });
 
-        return <div className="LayoutTable">
+        return <div className="LayoutTable" data-testid="PublicNarratives-table">
             {rows}
         </div>;
     }

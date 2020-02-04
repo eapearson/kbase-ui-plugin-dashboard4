@@ -1,4 +1,3 @@
-import { AppError } from "@kbase/ui-components";
 import { JobState } from "../../lib/comm/dynamicServices/MetricsServiceClient";
 
 export enum AsyncProcessStatus {

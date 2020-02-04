@@ -1,6 +1,6 @@
 import React from 'react';
 import YourNarratives, { Narrative } from './view';
-import { Card, Spin, Alert } from 'antd';
+import { Spin, Alert } from 'antd';
 import { AppError } from '@kbase/ui-components';
 import SearchClient from '../../lib/comm/coreServices/Search';
 

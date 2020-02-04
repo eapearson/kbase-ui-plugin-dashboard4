@@ -1,6 +1,6 @@
 import React from 'react';
 import SharedNarratives, { Narrative } from './view';
-import { Card, Spin, Alert } from 'antd';
+import { Spin, Alert } from 'antd';
 import { AppError } from '@kbase/ui-components';
 import SearchClient from '../../lib/comm/coreServices/Search';
 
@@ -155,7 +155,7 @@ export default class SharedNarrativesCard extends React.Component<Props, State> 
     }
     render() {
         return (
-            <div className="SharedNarratives">
+            <div className="SharedNarratives" data-testid="SharedNarratives">
                 {this.renderProcess()}
             </div>
         );

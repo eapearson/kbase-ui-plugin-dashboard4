@@ -1,8 +1,8 @@
 import React from 'react';
 import JobsComponent from './view';
-import { Card, Spin, Alert } from 'antd';
+import { Spin, Alert } from 'antd';
 import { AppError } from '@kbase/ui-components';
-import MetricsServiceClient, { JobState } from '../../lib/comm/dynamicServices/MetricsServiceClient';
+import MetricsServiceClient from '../../lib/comm/dynamicServices/MetricsServiceClient';
 import { AsyncProcessStatus, AsyncProcess, Job, serviceJobToUIJob } from './common';
 
 export interface Props {
@@ -93,7 +93,7 @@ export default class JobsCard extends React.Component<Props, State> {
     }
     render() {
         return (
-            <div className="YourJobs" data-testid="YourJobs">
+            <div className="YourJobs" data-testid="Jobs">
                 {this.renderProcess()}
             </div>
         );

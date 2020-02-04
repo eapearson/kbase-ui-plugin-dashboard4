@@ -1,6 +1,6 @@
 import React from 'react';
 import Organizations, { Organization } from './view';
-import { Card, Spin, Alert } from 'antd';
+import { Spin, Alert } from 'antd';
 import { AppError } from '@kbase/ui-components';
 import { GroupsClient } from '../../lib/comm/coreServices/Groups';
 

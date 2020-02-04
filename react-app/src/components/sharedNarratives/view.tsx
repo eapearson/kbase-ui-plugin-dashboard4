@@ -48,7 +48,7 @@ export default class SharedNarratives extends React.Component<Props, State> {
     }
 
     render() {
-        return <div className="SharedNarratives" data-testid="SharedNarratives">
+        return <div className="SharedNarratives" data-testid="SharedNarratives-table">
             {this.renderNarratives()}
         </div>;
     }
