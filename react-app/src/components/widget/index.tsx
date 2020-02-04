@@ -75,9 +75,15 @@ export default class Widget extends React.Component<WidgetProps, WidgetState> {
         // });
     }
     renderExtra() {
+        let icon: string;
+        if (this.props.showDetail) {
+            icon = "up";
+        } else {
+            icon = "down";
+        }
         return <Button
             type="link"
-            icon="ellipsis"
+            icon={icon}
             onClick={this.toggleDetail.bind(this)} />;
     }
     render() {

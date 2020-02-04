@@ -1,24 +1,5 @@
 .PublicNarratives {}
 
-.LayoutTable {
-    display: flex;
-    flex-direction: column;
-}
-
-.LayoutTable-row {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.LayoutTable-cell {
-    flex: 1 1 0px;
-    display: block;
-
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-}
 
 .PublicNarratives .LayoutTable-cell:nth-child(2) {
     flex: 0 0 6em;

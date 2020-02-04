@@ -1,28 +1,8 @@
 .Organizations {}
 
-.LayoutTable {
-    display: flex;
-    flex-direction: column;
-}
-
 .Organizations .LayoutTable {
     max-height: 8em;
     overflow-y: auto;
-}
-
-.LayoutTable-row {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.LayoutTable-cell {
-    flex: 1 1 0px;
-    display: block;
-
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
 }
 
 .Organizations .LayoutTable-cell:nth-child(2) {

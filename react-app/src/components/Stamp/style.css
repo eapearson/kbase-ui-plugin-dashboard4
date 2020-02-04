@@ -1,0 +1,24 @@
+.Stamp {
+    padding: 4px;
+}
+
+.Stamp-info {
+    background-color: blue;
+}
+
+.Stamp-warning {
+    background-color: orange;
+}
+
+.Stamp-error {
+    background-color: red;
+    color: white;
+}
+
+.Stamp-success {
+    background-color: green;
+}
+
+.Stamp-neutral {
+    background-color: silver;
+}

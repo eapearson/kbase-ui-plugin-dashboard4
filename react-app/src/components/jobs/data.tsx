@@ -93,7 +93,7 @@ export default class JobsCard extends React.Component<Props, State> {
     }
     render() {
         return (
-            <div className="YourJobs" data-testid="Jobs">
+            <div className="Jobs" data-testid="Jobs">
                 {this.renderProcess()}
             </div>
         );
