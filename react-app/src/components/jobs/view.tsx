@@ -56,7 +56,7 @@ export default class PublicNarratives extends React.Component<Props, State> {
     renderJobStatus(job: Job) {
         const detail = <div>
             <i>job</i> {job.id}<br />
-            <i>in</i> <a href={`/narrative/${job.narrativeID}`} target="_blank">{job.narrativeTitle}</a>
+            <i>in</i> <a href={`/narrative/${job.narrativeID}`} target="_blank" rel="noopener noreferrer">{job.narrativeTitle}</a>
         </div>;
         switch (job.status) {
             case JobStatus.QUEUED:
@@ -89,7 +89,7 @@ export default class PublicNarratives extends React.Component<Props, State> {
 
         const tooltip = <div>
             <i>job</i> {job.id}<br />
-            <i>in</i> <a href={`/narrative/${job.narrativeID}`} target="_blank">{job.narrativeTitle}</a>
+            <i>in</i> <a href={`/narrative/${job.narrativeID}`} target="_blank" rel="noopener noreferrer">{job.narrativeTitle}</a>
         </div>;
 
         return <div className="LayoutTable-row" key={String(job.id)}>
