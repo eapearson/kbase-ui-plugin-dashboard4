@@ -1,4 +1,4 @@
-import { ServiceClient } from '../ServiceClient';
+import { ServiceClient } from '../ServiceClient11';
 
 // interface IsAdminParam {
 //     username?: string;
@@ -37,6 +37,14 @@ interface GetExecAggrStatsResult {
     total_exec_time: number;
 }
 
+interface ListBasicModuleInfoParams {
+
+}
+
+interface ListBasicModuleIinfoResult {
+
+}
+
 export default class CatalogClient extends ServiceClient {
     module: string = 'Catalog';
 
@@ -56,4 +64,6 @@ export default class CatalogClient extends ServiceClient {
     async getExecAggrStats(param: GetExecAggrStatsParam): Promise<Array<GetExecAggrStatsResult>> {
         return await this.callFunc<GetExecAggrStatsParam, Array<GetExecAggrStatsResult>>('get_exec_aggr_stats', param);
     }
+
+    // async listBasicModuleInfo()
 }

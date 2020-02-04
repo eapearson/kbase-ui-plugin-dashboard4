@@ -1,4 +1,4 @@
-.YourNarratives {}
+.PublicNarratives {}
 
 .LayoutTable {
     display: flex;
@@ -20,7 +20,7 @@
     text-overflow: ellipsis;
 }
 
-.YourNarratives .LayoutTable-cell:nth-child(2) {
+.PublicNarratives .LayoutTable-cell:nth-child(2) {
     flex: 0 0 6em;
     text-align: right;
 }

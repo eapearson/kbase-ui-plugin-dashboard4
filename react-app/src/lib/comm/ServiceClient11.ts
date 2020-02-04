@@ -4,6 +4,7 @@ export interface ServiceClientParams {
     url: string;
     timeout: number;
     authorization?: string;
+    token?: string;
 }
 
 export abstract class ServiceClient {
@@ -11,10 +12,10 @@ export abstract class ServiceClient {
     url: string;
     timeout: number;
     authorization?: string;
-    constructor({ url, timeout, authorization }: ServiceClientParams) {
+    constructor({ url, timeout, authorization, token }: ServiceClientParams) {
         this.url = url;
         this.timeout = timeout;
-        this.authorization = authorization;
+        this.authorization = authorization || token;
     }
     async callFunc<ParamType, ReturnType>(funcName: string, params: ParamType): Promise<ReturnType> {
         const client = new JSONRPCClient({ url: this.url, timeout: this.timeout, authorization: this.authorization });

@@ -1,5 +1,5 @@
 import { ServiceWizardClient, GetServiceStatusResult, ServiceStatus } from './coreServices/ServiceWizard';
-import { ServiceClient, ServiceClientParams } from './ServiceClient';
+import { ServiceClient, ServiceClientParams } from './ServiceClient11';
 import Cache from './Cache';
 
 const ITEM_LIFETIME = 1800000;

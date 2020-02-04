@@ -1,4 +1,4 @@
-import { ServiceClient } from '../ServiceClient';
+import { ServiceClient } from '../ServiceClient11';
 
 // types from module
 

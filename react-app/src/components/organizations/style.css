@@ -1,8 +1,13 @@
-.YourNarratives {}
+.Organizations {}
 
 .LayoutTable {
     display: flex;
     flex-direction: column;
+}
+
+.Organizations .LayoutTable {
+    max-height: 8em;
+    overflow-y: auto;
 }
 
 .LayoutTable-row {
@@ -20,7 +25,14 @@
     text-overflow: ellipsis;
 }
 
-.YourNarratives .LayoutTable-cell:nth-child(2) {
+.Organizations .LayoutTable-cell:nth-child(2) {
     flex: 0 0 6em;
     text-align: right;
+}
+
+.Card {}
+
+.Card-content {
+    max-height: 7em;
+    overflow-y: auto;
 }
