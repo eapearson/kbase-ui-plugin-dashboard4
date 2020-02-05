@@ -1,18 +1,6 @@
 .Organizations {}
 
-.Organizations .LayoutTable {
-    max-height: 8em;
-    overflow-y: auto;
-}
-
 .Organizations .LayoutTable-cell:nth-child(2) {
     flex: 0 0 6em;
     text-align: right;
-}
-
-.Card {}
-
-.Card-content {
-    max-height: 7em;
-    overflow-y: auto;
 }

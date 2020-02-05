@@ -74,13 +74,25 @@ export default class PublicNarratives extends React.Component<Props, State> {
                 </Stamp>;
             // return <Alert type="success" message="complete" icon={<Icon type="check" />} showIcon />;
             case JobStatus.CANCELED_QUEUED:
-                return <Alert type="error" message="canceled" icon={<Icon type="exclamation" />} showIcon />;
+                return <Stamp type="neutral" icon="exclamation" detail={detail}>
+                    canceled
+                </Stamp>;
+            // return <Alert type="error" message="canceled" icon={<Icon type="exclamation" />} showIcon />;
             case JobStatus.CANCELED_RUNNING:
-                return <Alert type="error" message="canceled" icon={<Icon type="exclamation" />} showIcon />;
+                return <Stamp type="neutral" icon="exclamation" detail={detail}>
+                    canceled
+                </Stamp>;
+            // return <Alert type="error" message="canceled" icon={<Icon type="exclamation" />} showIcon />;
             case JobStatus.ERRORED_QUEUED:
-                return <Alert type="error" message="error" icon={<Icon type="stop" />} showIcon />;
+                return <Stamp type="error" icon="stop" detail={detail}>
+                    error
+            </Stamp>;
+            // return <Alert type="error" message="error" icon={<Icon type="stop" />} showIcon />;
             case JobStatus.ERRORED_RUNNING:
-                return <Alert type="error" message="error" icon={<Icon type="stop" />} showIcon />;
+                return <Stamp type="error" icon="stop" detail={detail}>
+                    error
+            </Stamp>;
+            // return <Alert type="error" message="error" icon={<Icon type="stop" />} showIcon />;
         }
     }
 

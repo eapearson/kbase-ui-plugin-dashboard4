@@ -1,6 +1,6 @@
 .Jobs {}
 
 .Jobs .LayoutTable-cell:nth-child(2) {
-    flex: 0 0 6em;
+    flex: 0 0 8em;
     text-align: right;
 }
