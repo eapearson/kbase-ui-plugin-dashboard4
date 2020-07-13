@@ -1,11 +1,7 @@
-import { JSONRPCClient } from './JSONRPC11';
+import { JSONRPCClient } from '../JSONRPC11';
+import { ServiceClientParams } from './common';
 
-export interface ServiceClientParams {
-    url: string;
-    timeout: number;
-    authorization?: string;
-    token?: string;
-}
+
 
 export abstract class ServiceClient {
     abstract module: string;

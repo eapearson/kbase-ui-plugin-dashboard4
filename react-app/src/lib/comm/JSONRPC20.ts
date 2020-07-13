@@ -3,7 +3,7 @@ import {
     RequestOptions, HTTPHeader
 } from './HTTPClient';
 
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { JSONValue, JSONObject, JSONArray } from '../json';
 
 // Core JSON RPC 2.0
@@ -86,7 +86,7 @@ export class JSONRPCClient {
         return {
             jsonrpc: '2.0',
             method,
-            id: uuid.v4(),
+            id: uuid(),
             params: params
         };
     }

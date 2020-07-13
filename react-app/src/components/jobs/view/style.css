@@ -1,0 +1,41 @@
+.Jobs {}
+
+.Jobs .LayoutTable-cell:nth-child(1) {
+    flex: 0 0 2em;
+    text-align: center;
+}
+
+.Jobs .LayoutTable-cell:nth-child(3) {
+    flex: 0 0 8em;
+    text-align: right;
+}
+
+.ant-tooltip-content a {
+    color: white;
+}
+
+.ant-tooltip-content a:hover,
+.ant-tooltip-content a:active {
+    color: white;
+    text-decoration: underline;
+}
+
+.MiniInfoTable {
+    display: flex;
+    flex-direction: column;
+}
+
+.MiniInfoTable>div {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.MiniInfoTable>div>div:nth-child(1) {
+    flex: 0 0 2em;
+    font-style: italic;
+}
+
+.MiniInfoTable>div>div:nth-child(2) {
+    flex: 1 1 0px;
+}

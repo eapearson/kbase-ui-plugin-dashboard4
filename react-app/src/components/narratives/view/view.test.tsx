@@ -2,10 +2,10 @@ import React from 'react';
 import { render, wait } from '@testing-library/react';
 import Component from './view';
 
-test('renders learn react link', async () => {
-    const { findAllByTestId } = render(<Component jobs={[]} />);
+test('renders a list of narratives', async () => {
+    const { findAllByTestId } = render(<Component narratives={[]} />);
     await wait(async () => {
-        const el = await findAllByTestId('Jobs-table');
+        const el = await findAllByTestId('YourNarratives-table');
         expect(el.length).toEqual(1);
     });
 });

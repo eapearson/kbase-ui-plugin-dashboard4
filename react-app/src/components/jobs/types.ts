@@ -35,8 +35,6 @@ export type AsyncProcess<T, E> =
     AsyncProcessComplete<T> |
     AsyncProcessError<E>;
 
-
-
 export enum JobStatus {
     QUEUED = "QUEUED",
     RUNNING = "RUNNING",
@@ -428,3 +426,10 @@ export function serviceJobToUIJob(job: JobState, username: string): Job {
             throw new Error('Invalid job status: ' + job.status);
     }
 }
+
+// config props
+
+export interface JobsConfig {
+
+}
+

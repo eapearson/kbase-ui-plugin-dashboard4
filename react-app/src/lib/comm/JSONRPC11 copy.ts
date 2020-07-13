@@ -3,7 +3,7 @@ import {
     RequestOptions, HTTPHeader
 } from './HTTPClient';
 
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 export interface JSONRPCRequestOptions {
     func: string,
@@ -98,7 +98,7 @@ export abstract class JSONRPCClient {
         const rpc: JSONRPCRequest = {
             version: '1.1',
             method: JSONRPCClient.module + '.' + func,
-            id: uuid.v4(),
+            id: uuid(),
             params: [params],
         };
 

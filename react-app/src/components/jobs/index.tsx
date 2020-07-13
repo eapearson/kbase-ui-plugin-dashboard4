@@ -1,47 +1,28 @@
-import Component from './data';
-import { StoreState } from '../../redux/store';
-import { Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { WidgetView } from '../dashboard/view';
+import { JobsConfig } from './types';
+import React from 'react';
+import Jobs from './view';
+import About from './about';
+import Config from './config';
 
-export interface OwnProps {
+export interface Props {
+    view: WidgetView;
+    config: JobsConfig;
+}
+
+export interface State {
 
 }
 
-interface StateProps {
-    token: string;
-    username: string;
-    serviceWizardURL: string;
-}
-
-interface DispatchProps {
-
-}
-
-function mapStateToProps(state: StoreState, props: OwnProps): StateProps {
-    const {
-        auth: { userAuthorization },
-        app: {
-            config: {
-                services: {
-                    ServiceWizard: { url: serviceWizardURL }
-                }
-            }
+export default class JobsWidget extends React.Component<Props, State> {
+    render() {
+        switch (this.props.view) {
+            case WidgetView.FRONT:
+                return <Jobs config={this.props.config} />;
+            case WidgetView.ABOUT:
+                return <About />;
+            case WidgetView.CONFIG:
+                return <Config />;
         }
-    } = state;
-
-    if (!userAuthorization) {
-        throw new Error('Invalid state: token required');
     }
-    const { token, username } = userAuthorization;
-
-    return { token, username, serviceWizardURL };
 }
-
-function mapDispatchToProps(dispatch: Dispatch<Action>, ownProps: OwnProps): DispatchProps {
-    return {};
-}
-
-export default connect<StateProps, DispatchProps, OwnProps, StoreState>(
-    mapStateToProps,
-    mapDispatchToProps
-)(Component);

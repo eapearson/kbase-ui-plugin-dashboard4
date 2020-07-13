@@ -1,4 +1,4 @@
-import { ServiceClient } from '../ServiceClient20';
+import { ServiceClient } from '../serviceClient/ServiceClient20';
 import { JSONValue, JSONObject, JSONArray } from '../../json';
 
 export interface MatchValue {

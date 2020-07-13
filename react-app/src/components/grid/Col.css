@@ -1,0 +1,26 @@
+.Grid .GridCol {
+    flex: 1 1 0px;
+    /* border: 1px solid silver; */
+    position: relative;
+}
+
+
+.Grid .GridCol>.GridCol-Drag {
+    /* border: 1px solid blue; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.Grid .GridCol>.GridCol-Drag.-dragging {
+    /* border: 1px solid red; */
+    background-color: rgba(253, 194, 194, 0.5)
+}
+
+.Grid .GridCol>.GridCol-Drag.-dragged {
+    /* border: 1px solid green; */
+    background-color: rgba(178, 250, 220, 0.5)
+}

@@ -1,11 +1,6 @@
-import { JSONRPCClient } from './JSONRPC20';
-import { JSONValue, JSONArray, JSONObject } from '../json';
-
-export interface ServiceClientParams {
-    url: string;
-    timeout: number;
-    authorization?: string;
-}
+import { JSONRPCClient } from '../JSONRPC20';
+import { JSONValue, JSONArray, JSONObject } from '../../json';
+import { ServiceClientParams } from './common';
 
 export type ResultTransformer<T> = (value: JSONValue) => T;
 

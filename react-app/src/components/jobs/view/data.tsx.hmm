@@ -3,7 +3,21 @@ import JobsComponent from './view';
 import { Spin, Alert } from 'antd';
 import { AppError } from '@kbase/ui-components';
 import MetricsServiceClient from '../../lib/comm/dynamicServices/MetricsServiceClient';
-import { AsyncProcessStatus, AsyncProcess, Job, serviceJobToUIJob } from './common';
+import { Job, serviceJobToUIJob } from './common';
+import { AsyncProcess, AsyncProcessStatus } from '../../lib/AsyncProcess';
+
+enum JobStatus {
+    CREATE,
+    QUEUE,
+    RUN,
+    COMPLETE,
+    ERROR,
+    CANCEL
+}
+
+export interface JobsConfig {
+    jobStatus: Array<JobStatus>;
+}
 
 export interface Props {
     token: string;
@@ -34,11 +48,21 @@ export default class JobsCard extends React.Component<Props, State> {
         const to = new Date().getTime();
         const from = to - (1000 * 60 * 60 * 24 * 120);
 
-        return metricsClient.getJobs({
+        return metricsClient.queryJobs({
             epoch_range: [from, to],
-            user_ids: [this.props.username]
-        }).then(metrics => {
-            const converted = metrics.job_states.map(jobState => {
+            filter: [{
+                user_id: [this.props.username]
+            }],
+            offset: 0,
+            limit: 5,
+            sort: [
+                {
+                    field: 'modification_time',
+                    direction: 'descending'
+                }
+            ]
+        }).then((result) => {
+            const converted = result.job_states.map(jobState => {
                 return serviceJobToUIJob(jobState, this.props.username);
             });
 

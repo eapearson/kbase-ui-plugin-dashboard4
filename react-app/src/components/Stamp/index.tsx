@@ -1,21 +1,20 @@
 import React from 'react';
 import './style.css';
-import { Icon, Tooltip } from 'antd';
+import { Tooltip } from 'antd';
+import { InfoOutlined, WarningFilled, LoadingOutlined, ExclamationOutlined, StopOutlined, CheckOutlined } from '@ant-design/icons';
 
 export type StampType =
-    'info' | 'warning' | 'error' | 'success' | 'neutral';
+    'info' | 'warning' | 'error' | 'success' | 'neutral' | 'loading';
 
 export interface StampProps {
     type: StampType;
-    icon?: string;
+    // icon?: string;
     detail?: JSX.Element;
 }
 
 interface StampState {
 
 }
-
-
 
 export default class Stamp extends React.Component<StampProps, StampState> {
 
@@ -24,8 +23,19 @@ export default class Stamp extends React.Component<StampProps, StampState> {
     }
 
     renderIcon() {
-        if (this.props.icon) {
-            return <Icon type={this.props.icon} />;
+        switch (this.props.type) {
+            case 'info':
+                return <InfoOutlined />;
+            case 'warning':
+                return <WarningFilled />;
+            case 'loading':
+                return <LoadingOutlined />;
+            case 'neutral':
+                return <ExclamationOutlined />;
+            case 'error':
+                return <StopOutlined />;
+            case 'success':
+                return <CheckOutlined />;
         }
     }
 

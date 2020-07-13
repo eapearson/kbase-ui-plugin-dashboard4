@@ -1,4 +1,4 @@
-import { ServiceClient } from '../ServiceClient11';
+import { ServiceClient } from '../serviceClient/ServiceClient11';
 
 export interface MatchValue {
     value?: string;

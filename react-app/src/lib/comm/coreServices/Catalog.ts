@@ -1,4 +1,4 @@
-import { ServiceClient } from '../ServiceClient11';
+import { ServiceClient } from '../serviceClient/ServiceClient11';
 
 // interface IsAdminParam {
 //     username?: string;

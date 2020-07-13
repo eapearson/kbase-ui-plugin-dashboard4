@@ -1,6 +1,7 @@
-import { ServiceWizardClient, GetServiceStatusResult, ServiceStatus } from './coreServices/ServiceWizard';
-import { ServiceClient, ServiceClientParams } from './ServiceClient11';
-import Cache from './Cache';
+import { ServiceWizardClient, GetServiceStatusResult, ServiceStatus } from '../coreServices/ServiceWizard';
+import { ServiceClient, ParamTransformer, ResultTransformer } from '../serviceClient/ServiceClient20';
+import Cache from '../Cache';
+import { ServiceClientParams } from '../serviceClient/common';
 
 const ITEM_LIFETIME = 1800000;
 const MONITORING_FREQUENCY = 60000;
@@ -59,7 +60,6 @@ export abstract class DynamicServiceClient extends ServiceClient {
         }
 
         this.serviceDiscoveryURL = params.url;
-        // this.module = module;
     }
 
     private moduleId() {
@@ -79,11 +79,6 @@ export abstract class DynamicServiceClient extends ServiceClient {
         });
     }
 
-    // setCached(value: any) {
-    //     moduleCache.setItem(this.moduleId(), value);
-    // }
-
-    // TODO: Promise<any> -> Promise<ServiceStatusResult>
     private async lookupModule(): Promise<GetServiceStatusResult> {
         const moduleInfo = await this.getCached(
             (): Promise<GetServiceStatusResult> => {
@@ -107,26 +102,14 @@ export abstract class DynamicServiceClient extends ServiceClient {
         return moduleInfo;
     }
 
-    // private async syncModule()
-
-    // async callFunc<P, T>(funcName: string, params: P): Promise<T> {
-    //     const moduleInfo = await this.lookupModule();
-    //     const client = new ServiceClient({
-    //         module: moduleInfo.module_name,
-    //         url: moduleInfo.url,
-    //         token: this.token
-    //     });
-
-    //     return await client.callFunc<P, T>(funcName, params);
-    // }
-
-    async callFunc<ParamType, ReturnType>(funcName: string, params: ParamType): Promise<ReturnType> {
+    async callFunc<ParamType, ReturnType>(
+        funcName: string,
+        params: ParamType,
+        paramTransformer: ParamTransformer<ParamType>,
+        resultTransformer: ResultTransformer<ReturnType>
+    ): Promise<ReturnType> {
         await this.lookupModule();
-        return super.callFunc(funcName, params);
-    }
-    async callFuncEmptyResult<ParamType, ReturnType>(funcName: string, params: ParamType): Promise<void> {
-        await this.lookupModule();
-        return super.callFuncEmptyResult(funcName, params);
+        return super.callFunc<ParamType, ReturnType>(funcName, params, paramTransformer, resultTransformer);
     }
 }
 

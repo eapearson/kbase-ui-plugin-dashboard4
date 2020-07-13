@@ -3,6 +3,7 @@ import Organizations, { Organization } from './view';
 import { Spin, Alert } from 'antd';
 import { AppError } from '@kbase/ui-components';
 import { GroupsClient } from '../../lib/comm/coreServices/Groups';
+import { AsyncProcess, AsyncProcessStatus } from '../../lib/AsyncProcess';
 
 export interface Props {
     token: string;
@@ -10,40 +11,6 @@ export interface Props {
     groupsURL: string;
 }
 
-export enum AsyncProcessStatus {
-    NONE,
-    BUSY,
-    COMPLETE,
-    ERROR
-}
-
-export interface AsyncProcessBase {
-    status: AsyncProcessStatus;
-}
-
-export interface AsyncProcessNone {
-    status: AsyncProcessStatus.NONE;
-}
-
-export interface AsyncProcessBusy {
-    status: AsyncProcessStatus.BUSY;
-}
-
-export interface AsyncProcessComplete<T> {
-    status: AsyncProcessStatus.COMPLETE;
-    value: T;
-}
-
-export interface AsyncProcessError<E> {
-    status: AsyncProcessStatus.ERROR;
-    error: E;
-}
-
-export type AsyncProcess<T, E> =
-    AsyncProcessNone |
-    AsyncProcessBusy |
-    AsyncProcessComplete<T> |
-    AsyncProcessError<E>;
 
 interface State {
     process: AsyncProcess<Array<Organization>, AppError>;
