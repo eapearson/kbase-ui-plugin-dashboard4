@@ -28,8 +28,10 @@ export default class DataWrapper extends React.Component<NarrativesProps, Narrat
         };
     }
     async fetchRecentNarratives(): Promise<Array<Narrative>> {
+        console.log('[fetchRecentNarratives]', this.props);
         const searchClient = new SearchClient({
             url: this.props.searchURL,
+            authorization: this.props.token,
             timeout: 10000
         });
         const query: any = {
@@ -53,13 +55,13 @@ export default class DataWrapper extends React.Component<NarrativesProps, Narrat
             if (this.props.config.isOwn) {
                 query.bool.must.push({
                     term: {
-                        creator: this.props.username
+                        owner: this.props.username
                     }
                 });
             } else {
                 query.bool.must_not.push({
                     term: {
-                        creator: this.props.username
+                        owner: this.props.username
                     }
                 });
             }

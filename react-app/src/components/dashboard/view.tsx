@@ -95,7 +95,7 @@ export default class Dashboard extends React.Component<DashboardProps, Dashboard
                 id: 'narratives',
                 type: WidgetType.NARRATIVES,
                 props: {
-                    isOwn: true
+
                 }
                 // renderFront: () => {
                 //     return <YourNarrativesCard />;

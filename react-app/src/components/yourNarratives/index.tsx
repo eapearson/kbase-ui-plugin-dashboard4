@@ -23,10 +23,6 @@ function mapStateToProps(state: StoreState, props: OwnProps): StateProps {
         app: {
             config: {
                 baseUrl
-                // services: {
-
-                //     // ServiceWizard: { url: serviceWizardURL }
-                // }
             }
         }
     } = state;

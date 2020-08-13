@@ -101,7 +101,7 @@ export interface ObjectData {
     timestamp: number;
     type: string;
     type_ver: number;
-    creator: string;
+    owner: string;
     copier: string;
     mod: string;
     method: string;

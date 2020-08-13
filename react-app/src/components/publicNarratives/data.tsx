@@ -42,7 +42,7 @@ export default class TutoriaNarrativesCard extends React.Component<Props, State>
                     must_not: [
                         {
                             term: {
-                                creator: this.props.username,
+                                owner: this.props.username,
                             }
                         }
                     ]

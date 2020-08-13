@@ -109,7 +109,7 @@ export interface ObjectData {
     timestamp: number;
     type: string;
     type_ver: number;
-    creator: string;
+    owner: string;
     copier: string;
     mod: string;
     method: string;
@@ -166,7 +166,7 @@ export interface NarrativeSearchDocument extends SearchDocument {
     narrative_title: string;
     data_objects: Array<NarrativeDataObject>;
     cells: Array<NarrativeCell>;
-    creator: string;
+    owner: string;
     total_cells: number;
 }
 
@@ -277,7 +277,7 @@ function searchObjectsResultTransformer(result: JSONValue): SearchObjectsResult 
                 narrative_title: extractString(searchDoc, 'narrative_title'),
                 data_objects: [],
                 cells: [],
-                creator: extractString(searchDoc, 'creator'),
+                owner: extractString(searchDoc, 'owner'),
                 total_cells: extractNumber(searchDoc, 'total_cells'),
                 access_group: extractNumber(searchDoc, 'access_group'),
                 obj_name: extractString(searchDoc, 'obj_name'),
@@ -296,6 +296,7 @@ function searchObjectsResultTransformer(result: JSONValue): SearchObjectsResult 
 
         };
     });
+
     return {
         count: extractNumber(searchObject, 'count'),
         search_time: extractNumber(searchObject, 'search_time'),

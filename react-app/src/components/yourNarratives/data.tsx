@@ -27,12 +27,13 @@ export default class YourNarrativesCard extends React.Component<Props, State> {
     async fetchRecentNarratives(): Promise<Array<Narrative>> {
         const searchClient = new SearchClient({
             url: this.props.searchURL,
+            authorization: this.props.token,
             timeout: 10000
         });
         const results = await searchClient.searchObjects({
             query: {
                 term: {
-                    creator: this.props.username,
+                    owner: this.props.username,
                 }
             },
             from: 0,
@@ -54,6 +55,8 @@ export default class YourNarrativesCard extends React.Component<Props, State> {
                 creation_date,
                 timestamp: updatedAt
             } = result.doc;
+
+            console.log('hmm', result.doc);
 
             const createdAt = new Date(creation_date).getTime();
 

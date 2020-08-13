@@ -30,11 +30,13 @@ export abstract class ServiceClient {
             authorization: this.authorization
         });
         const method = this.module ? `${this.module}.${funcName}` : funcName;
-        const result = await client.callMethod(method, paramTransformer(params), {
+        const callParams = paramTransformer(params);
+        const result = await client.callMethod(method, callParams, {
             timeout: this.timeout
         });
 
-        return resultTransformer(result);
-
+        const transformedResult = resultTransformer(result);
+        // console.log('[callFunc]', params, callParams, result, transformedResult);
+        return transformedResult;
     }
 }
