@@ -18,5 +18,5 @@ install:
         - name: dashboard4
           definition:
               path: ["dashboard4"]
-              label: Dashboard V4
+              label: Erik's Dashboard (V4)
               icon: tachometer
