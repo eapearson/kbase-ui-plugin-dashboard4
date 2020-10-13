@@ -2,17 +2,18 @@
 ---
 package:
   author: KBase Developer
-  name: example-hello
+  name: dashboard4
   description: An example plugin which says "hello"
   type: iframe
-install:
-  routes:
-    - path: dashboard4
-      view: main
-      authorization: true
+services:
+  route:
+    routes:
+      - path: dashboard4
+        view: main
+        authorization: true
   menu:
-    - name: dashboard4
-      definition:
-        path: ["dashboard4"]
+    items:
+      - name: dashboard4
+        path: dashboard4
         label: Erik's Dashboard (V4)
         icon: tachometer
