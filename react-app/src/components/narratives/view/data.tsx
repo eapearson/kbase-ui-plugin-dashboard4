@@ -19,6 +19,8 @@ interface NarrativesState {
 }
 
 export default class DataWrapper extends React.Component<NarrativesProps, NarrativesState> {
+    currentSearch: string | null;
+    currentCount: number;
     constructor(props: NarrativesProps) {
         super(props);
         this.state = {
@@ -26,9 +28,10 @@ export default class DataWrapper extends React.Component<NarrativesProps, Narrat
                 status: AsyncProcessStatus.NONE
             }
         };
+        this.currentSearch = null;
+        this.currentCount = 5;
     }
     async fetchRecentNarratives(): Promise<Array<Narrative>> {
-        console.log('[fetchRecentNarratives]', this.props);
         const searchClient = new SearchClient({
             url: this.props.searchURL,
             authorization: this.props.token,
@@ -91,10 +94,18 @@ export default class DataWrapper extends React.Component<NarrativesProps, Narrat
             }
         }
 
+        if (this.currentSearch) {
+            query.bool.must.push({
+                term: {
+                    agg_fields: this.currentSearch
+                }
+            });
+        }
+
         const results = await searchClient.searchObjects({
             query,
             from: 0,
-            size: 5,
+            size: this.currentCount,
             indexes: ['narrative'],
             sort: [
                 {
@@ -103,7 +114,8 @@ export default class DataWrapper extends React.Component<NarrativesProps, Narrat
                     }
                 },
                 "_score"
-            ]
+            ],
+            track_total_hits: true
         });
         const searchResult: Array<Narrative> = results.hits.map((result) => {
             const {
@@ -121,9 +133,11 @@ export default class DataWrapper extends React.Component<NarrativesProps, Narrat
         return searchResult;
     }
     async componentDidMount() {
+        this.doSearch();
+    }
+    async doSearch() {
         try {
             const narratives = await this.fetchRecentNarratives();
-
             this.setState({
                 process: {
                     status: AsyncProcessStatus.COMPLETE,
@@ -146,6 +160,15 @@ export default class DataWrapper extends React.Component<NarrativesProps, Narrat
     renderError(error: AppError) {
         return <Alert type="error" message={error.message} />;
     }
+    onSearch(query: string) {
+        this.currentSearch = query;
+        this.doSearch();
+    }
+    onCount(count: number) {
+        this.currentCount = count;
+        this.doSearch();
+
+    }
     renderProcess() {
         switch (this.state.process.status) {
             case AsyncProcessStatus.NONE:
@@ -153,7 +176,7 @@ export default class DataWrapper extends React.Component<NarrativesProps, Narrat
                 return <span><Spin />{' '}Fetching your narratives...</span>;
             case AsyncProcessStatus.COMPLETE:
                 return (
-                    <Narratives narratives={this.state.process.value} />
+                    <Narratives narratives={this.state.process.value} onSearch={this.onSearch.bind(this)} onCount={this.onCount.bind(this)} />
                 );
             case AsyncProcessStatus.ERROR:
                 return this.renderError(this.state.process.error);

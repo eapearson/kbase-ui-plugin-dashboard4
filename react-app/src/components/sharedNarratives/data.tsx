@@ -60,7 +60,8 @@ export default class SharedNarrativesCard extends React.Component<Props, State> 
                 },
                 "_score"
             ],
-            only_public: true
+            only_public: true,
+            track_total_hits: true
         });
 
         const searchResult: Array<Narrative> = results.hits.map((result) => {

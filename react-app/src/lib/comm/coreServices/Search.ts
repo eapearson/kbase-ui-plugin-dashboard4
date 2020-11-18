@@ -86,17 +86,17 @@ export type narrative_info = [string, number, number, string, string];
 
 /*
 typedef tuple<ws_id id, ws_name workspace, username owner, timestamp moddate,
-		int max_objid, permission user_permission, permission globalread,
-		lock_status lockstat, usermeta metadata> workspace_info;
-		
+        int max_objid, permission user_permission, permission globalread,
+        lock_status lockstat, usermeta metadata> workspace_info;
+    	
 */
 export type workspace_info = [number, string, string, number, number, string, string, string, MapStringOf<string>];
 
 /*
 typedef tuple<obj_id objid, obj_name name, type_string type,
-		timestamp save_date, int version, username saved_by,
-		ws_id wsid, ws_name workspace, string chsum, int size, usermeta meta>
-		object_info;
+        timestamp save_date, int version, username saved_by,
+        ws_id wsid, ws_name workspace, string chsum, int size, usermeta meta>
+        object_info;
 	
 */
 export type object_info = [number, string, string, number, number, string, number, string, string, number, MapStringOf<string>];
@@ -131,6 +131,7 @@ export type SearchObjectsParam = {
     size: number;
     from: number;
     sort: any;
+    track_total_hits: boolean;
 };
 
 export type User = string;
@@ -313,7 +314,7 @@ function searchObjectsParamTransformer(param: SearchObjectsParam): JSONObject {
     result['size'] = param.size;
     result['from'] = param.from;
     result['sort'] = param.sort;
-
+    result['track_total_hits'] = param.track_total_hits;
     return result;
 }
 

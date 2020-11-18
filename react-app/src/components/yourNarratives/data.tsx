@@ -37,7 +37,7 @@ export default class YourNarrativesCard extends React.Component<Props, State> {
                 }
             },
             from: 0,
-            size: 5,
+            size: 20,
             indexes: ['narrative'],
             sort: [
                 {
@@ -46,7 +46,8 @@ export default class YourNarrativesCard extends React.Component<Props, State> {
                     }
                 },
                 "_score"
-            ]
+            ],
+            track_total_hits: true
         });
         const searchResult: Array<Narrative> = results.hits.map((result) => {
             const {
