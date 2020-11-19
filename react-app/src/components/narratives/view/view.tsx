@@ -2,7 +2,6 @@ import React from 'react';
 import { Tooltip, Empty, Input, Select } from 'antd';
 import './style.css';
 import { NiceRelativeTime } from '@kbase/ui-components';
-import { SelectValue } from 'antd/lib/select';
 
 export interface Narrative {
     id: number;

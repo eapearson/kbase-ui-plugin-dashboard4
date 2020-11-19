@@ -50,7 +50,8 @@ enum WidgetType {
 export enum WidgetView {
     FRONT,
     CONFIG,
-    ABOUT
+    ABOUT,
+    OPTIONS
 }
 
 interface WidgetRegistration {
@@ -467,6 +468,9 @@ export default class Dashboard extends React.Component<DashboardProps, Dashboard
             case 'view':
                 view = WidgetView.FRONT;
                 break;
+            case 'options':
+                view = WidgetView.OPTIONS;
+                break;
             case 'config':
                 view = WidgetView.CONFIG;
                 break;
@@ -474,7 +478,7 @@ export default class Dashboard extends React.Component<DashboardProps, Dashboard
                 view = WidgetView.ABOUT;
                 break;
             default:
-                view = WidgetView.FRONT;
+                view = WidgetView.OPTIONS;
         }
         widgetInstance.view = view;
         widgetInstances[id] = widgetInstance;

@@ -4,6 +4,7 @@ import React from 'react';
 import Narratives from './view';
 import About from './about';
 import Config from './config';
+import Options from './options';
 
 export interface Props {
     view: WidgetView;
@@ -37,6 +38,8 @@ export default class NarrativesWidget extends React.Component<Props, State> {
                     config={this.state.config}
                     onChangeConfig={this.props.onChangeConfig}
                 />;
+            case WidgetView.OPTIONS:
+                return <Options />;
         }
     }
 }

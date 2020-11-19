@@ -23,6 +23,8 @@ export default class JobsWidget extends React.Component<Props, State> {
                 return <About />;
             case WidgetView.CONFIG:
                 return <Config />;
+            case WidgetView.OPTIONS:
+                return <div>options here</div>;
         }
     }
 }

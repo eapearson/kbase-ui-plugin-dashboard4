@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card, Button, Alert } from 'antd';
 import {
-    ArrowLeftOutlined, ArrowRightOutlined, ArrowUpOutlined, ArrowDownOutlined, EllipsisOutlined, BorderOuterOutlined
+    ArrowLeftOutlined, ArrowRightOutlined, ArrowUpOutlined,
+    ArrowDownOutlined, EllipsisOutlined, BorderOuterOutlined
 } from '@ant-design/icons';
 import './style.css';
 
@@ -35,6 +36,10 @@ export default class Widget extends React.Component<WidgetProps, WidgetState> {
     constructor(props: WidgetProps) {
         super(props);
         this.tabs = [
+            {
+                tab: 'options',
+                key: 'options'
+            },
             {
                 tab: 'view',
                 key: 'view'
@@ -101,6 +106,7 @@ export default class Widget extends React.Component<WidgetProps, WidgetState> {
     }
     renderExtra() {
         return <>
+            {/* {this.renderMenu()} */}
             <Button
                 type="link"
                 icon={this.renderDetailToggleButton()}
@@ -170,6 +176,24 @@ export default class Widget extends React.Component<WidgetProps, WidgetState> {
         </div>;
     }
 
+    // renderMenu() {
+    //     const menu = <Menu>
+    //         <Menu.Item>
+    //             item 1
+    //         </Menu.Item>
+    //         <Menu.Item>
+    //             item 2
+    //         </Menu.Item>
+    //     </Menu>;
+
+    //     return <Dropdown overlay={menu} trigger={["click"]}>
+    //         <span style={{ cursor: 'pointer' }}>
+    //             <span>menu</span>
+    //             <DownOutlined />
+    //         </span>
+    //     </Dropdown>;
+    // }
+
     render() {
         let actions: Array<React.ReactNode> = [];
         if (this.props.showDetail) {
@@ -183,8 +207,6 @@ export default class Widget extends React.Component<WidgetProps, WidgetState> {
                 <ArrowUpOutlined key="up" onClick={this.props.onMoveUp} />,
                 <ArrowDownOutlined key="down" onClick={this.props.onMoveDown} />
             ];
-        }
-        if (this.props.showDetail) {
             return <div className="Widget" >
                 <Card
                     title={this.renderTitle()}
@@ -195,19 +217,16 @@ export default class Widget extends React.Component<WidgetProps, WidgetState> {
                     onTabChange={this.handleTabChange.bind(this)}
                     extra={this.renderExtra()}
                     actions={actions}>
-
                     {this.renderTabPane()}
                 </Card>
             </div>;
         } else {
             return <div className="Widget"
             >
-
                 <Card
                     title={this.renderTitle()}
                     size="small"
                     extra={this.renderExtra()}
-
                     actions={actions}>
                     {this.renderTabPane()}
                 </Card>
