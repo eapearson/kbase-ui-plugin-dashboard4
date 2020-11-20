@@ -1,6 +1,0 @@
-.YourNarratives {}
-
-.YourNarratives .LayoutTable-cell:nth-child(2) {
-    flex: 0 0 6em;
-    text-align: right;
-}

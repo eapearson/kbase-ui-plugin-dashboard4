@@ -146,9 +146,6 @@ export default class Config extends React.Component<Props, State> {
     }
     render() {
         return <div>
-            <h2>
-                Config
-            </h2>
             {this.renderForm()}
         </div>;
     }

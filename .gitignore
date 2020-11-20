@@ -24,3 +24,5 @@ _trash
 
 # Don't accidentally commit the dist directory
 /dist/
+
+_attic
