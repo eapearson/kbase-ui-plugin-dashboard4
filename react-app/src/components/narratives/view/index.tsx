@@ -4,7 +4,6 @@ import { Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
 export interface OwnProps {
-
 }
 
 interface StateProps {
@@ -14,7 +13,6 @@ interface StateProps {
 }
 
 interface DispatchProps {
-
 }
 
 function mapStateToProps(state: StoreState, props: OwnProps): StateProps {
@@ -22,11 +20,11 @@ function mapStateToProps(state: StoreState, props: OwnProps): StateProps {
         auth: { userAuthorization },
         app: {
             config: {
-                baseUrl
-                // services: {
-
-                //     // ServiceWizard: { url: serviceWizardURL }
-                // }
+                services: {
+                    SearchAPI2: {
+                        url: searchURL
+                    }
+                }
             }
         }
     } = state;
@@ -35,9 +33,6 @@ function mapStateToProps(state: StoreState, props: OwnProps): StateProps {
         throw new Error('Invalid state: token required');
     }
     const { token, username } = userAuthorization;
-
-    // TODO: search2 need to be in kbase-ui-lib.
-    const searchURL = baseUrl + '/services/searchapi2/rpc';
 
     return { token, username, searchURL };
 }

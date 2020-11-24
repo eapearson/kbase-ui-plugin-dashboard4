@@ -4,7 +4,7 @@
     "private": true,
     "dependencies": {
         "@ant-design/icons": "4.3.0",
-        "@kbase/ui-components": "0.2.1-alpha.21",
+        "@kbase/ui-components": "0.2.1-alpha.22",
         "@kbase/ui-lib": "0.2.1-alpha.3",
         "@testing-library/jest-dom": "5.11.6",
         "@testing-library/react": "10.4.8",
